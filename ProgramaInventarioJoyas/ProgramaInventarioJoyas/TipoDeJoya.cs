@@ -12,7 +12,7 @@ namespace ProgramaInventarioJoyas
         static int cantidadTotalCollares = 0;
         static int cantidadTotalTobilleras = 0;
         static int escogertipodeJoya; //Escoger el usuario el Anillo, pulsera, collar, etc
-        static public List<string> tipoJoya = new List<string>(); //Una lista con el tipo de joya que escoge el usuario
+        static public List<string> tipoJoya = null; //Una lista con el tipo de joya que escoge el usuario
         static public List<int> cantidadPorJoya = new List<int>();
         static int precioJoya;
         static public void AgregarTipoJoyaPedido()

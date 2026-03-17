@@ -7,7 +7,7 @@ namespace TrabajoenParejasPOO
     {
         static void Main(string[] args)
         {
-            List<Cliente> infoClientes = null;
+            List<Cliente> infoClientes = new List<Cliente>();
             Cliente nuevoCliente = null;
             AbrirMenuPrincipal(nuevoCliente, infoClientes);
         }
@@ -34,7 +34,7 @@ namespace TrabajoenParejasPOO
                     case 1: //Crear Cliente - funciona
                         {
                             opcionCorrecta = true;
-                            nuevoCliente = new Cliente();
+                            //nuevoCliente = new Cliente();
                             AgregarCliente(nuevoCliente, infoClientes);
                             AbrirMenuPrincipal(nuevoCliente, infoClientes);
                             break;
@@ -42,8 +42,9 @@ namespace TrabajoenParejasPOO
                     case 2:
                         {
                             Console.Clear();
-                            nuevoCliente = new Cliente();
+                            //nuevoCliente = new Cliente();
                             EncontrarCliente(infoClientes);
+                            //Instanciar objeto
                             Cliente.AgregarJoyaDelCliente(nuevoCliente.cantidadTotalJoyas);
                             Cliente.AgregarJoyaCliente();
                             AbrirMenuPrincipal(nuevoCliente, infoClientes);
@@ -109,17 +110,19 @@ namespace TrabajoenParejasPOO
                 }
             } while (opcionCorrecta == false); // Con esta condición nos aseguramos de que el algoritmo no se salga del rango de opciones
         }
-        static public void AgregarCliente(Cliente nuevoCliente, List<Cliente> infoClientes)    // Acá se ingresan los datos personales del cliente.
+        static public List<Cliente> AgregarCliente(Cliente nuevoCliente, List<Cliente> infoClientes)    // Acá se ingresan los datos personales del cliente.
         {
             //nuevoCliente = new Cliente();
             //Variable para seguir agregando cliente (?)
             int seguirIngresando = 0;
             do
             {
+                nuevoCliente = new Cliente();
+                //infoClientes = new List<Cliente>();
                 Console.Clear();
-                Console.WriteLine("-- Ingrese sus datos personales --");
+                Console.WriteLine("-- Ingresar datos personales del cliente--");
                 Console.WriteLine("Nombre completo");
-                nuevoCliente.nombre = Console.ReadLine() ?? "";
+                nuevoCliente.nombre = Console.ReadLine() ?? "".ToUpper();
                 Console.WriteLine("Cédula (con esta se identificará su orden)");
                 nuevoCliente.cedula = Console.ReadLine() ?? "";
                 Console.WriteLine("Número de teléfono");
@@ -136,6 +139,7 @@ namespace TrabajoenParejasPOO
             Console.WriteLine("Cliente/s registrado");
             Console.WriteLine("Ingrese cualquier tecla para continuar");
             Console.ReadKey();
+            return infoClientes;
         }
         static public string EncontrarCliente(List<Cliente> infoClientes)
         {
@@ -154,7 +158,7 @@ namespace TrabajoenParejasPOO
                 Console.WriteLine("Ingrese cédula del cliente");
                 cedulabuscar = Console.ReadLine() ?? "";
                 //joyas.Any(j => j.Nombre.ToLower() == nombre.ToLower()))
-                if (cedulabuscar != null && infoClientes.Any(item => item.cedula == cedulabuscar))
+                if (!string.IsNullOrWhiteSpace(cedulabuscar) && infoClientes.Any(item => item != null && item.cedula == cedulabuscar))
                 {
                     //Usuario encontrado
                     return cedulabuscar;
@@ -184,9 +188,11 @@ namespace TrabajoenParejasPOO
             {
                 Console.Clear();
                 //Aquí se muestra la lista con toda la información de los clientes
+                Console.WriteLine("INFORMACIÓN DE LOS CLIENTES");
+                Console.WriteLine("NOMBRE -- CÉDULA -- TELÉFONO");
                 foreach (Cliente Cliente in infoCliente) //Recorrer la lista 
                 {
-                    Console.WriteLine(); //mostrar la lista
+                    Console.WriteLine($"{Cliente.nombre}-{Cliente.cedula}-{Cliente.telefono}"); //mostrar la lista
                 }
                 Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
                 Console.ReadKey();

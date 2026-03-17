@@ -50,6 +50,8 @@ namespace ProgramaInventarioJoyas
         static public int AgregarJoyaDelCliente(int cantidadTotalJoyas)  // Se determina la cantidad de joyas que el cliente.tiene guardadas en el programa
         {
             //Agregar únicamente la cantidad total de joyas al cliente en general
+            TipoDeJoya.tipoJoya = new List<string>();
+            TipoDePiedra.tipoPiedra = new List<string>();
             cantidadTotalJoyas++;
             return cantidadTotalJoyas;
         }
