@@ -7,9 +7,11 @@ namespace TrabajoenParejasPOO
     {
         static void Main(string[] args)
         {
-            AbrirMenuPrincipal();
+            List<Cliente> infoClientes = null;
+            Cliente nuevoCliente = null;
+            AbrirMenuPrincipal(nuevoCliente, infoClientes);
         }
-        static public void AbrirMenuPrincipal()
+        static public void AbrirMenuPrincipal(Cliente nuevoCliente, List<Cliente> infoClientes)
         {
             int opcion;
             bool opcionCorrecta = false;
@@ -25,8 +27,6 @@ namespace TrabajoenParejasPOO
             Console.WriteLine("7. Ver disponibilidad de una joya");
             Console.WriteLine("8. Salir");
             opcion = Int32.Parse(Console.ReadLine() ?? "");
-            Cliente nuevoCliente = null;
-            List<Cliente> infoClientes = new List<Cliente>();
             do
             {
                 switch (opcion)
@@ -35,33 +35,35 @@ namespace TrabajoenParejasPOO
                         {
                             opcionCorrecta = true;
                             nuevoCliente = new Cliente();
-                            nuevoCliente.AgregarCliente();
-                            nuevoCliente.nombre = nombre;
-                            nuevoCliente.cedula = cedula;
+                            AgregarCliente(nuevoCliente, infoClientes);
+                            AbrirMenuPrincipal(nuevoCliente, infoClientes);
                             break;
                         }
-                    case 2: //1/2, conectado con el case 4
+                    case 2:
                         {
                             Console.Clear();
                             nuevoCliente = new Cliente();
-                            EncontrarCliente();
+                            EncontrarCliente(infoClientes);
                             Cliente.AgregarJoyaDelCliente(nuevoCliente.cantidadTotalJoyas);
                             Cliente.AgregarJoyaCliente();
+                            AbrirMenuPrincipal(nuevoCliente, infoClientes);
                             break;
                         }
                     case 3: //Funciona
                         {
                             opcionCorrecta = true;
                             Console.Clear();
-                            VerInfoTotalClientes();
+                            VerInfoTotalClientes(infoClientes);
+                            AbrirMenuPrincipal(nuevoCliente, infoClientes);
                             break;
                         }
-                    case 4: //no funciona
+                    case 4:  
                         {
                             opcionCorrecta = true;
                             Console.Clear();
-                            EncontrarCliente();
+                            EncontrarCliente(infoClientes);
                             Cliente.VerJoyasCliente(TipoDeJoya.tipoJoya, nuevoCliente.nombre, nuevoCliente.cantidadTotalJoyas, nuevoCliente.cedula);
+                            AbrirMenuPrincipal(nuevoCliente, infoClientes);
                             break;
                         }
                     case 5: //funciona
@@ -69,6 +71,7 @@ namespace TrabajoenParejasPOO
                             opcionCorrecta = true;
                             Console.Clear();
                             Joyas.VerStock(TipoDeJoya.cantidadPorJoya,TipoDePiedra.cantidadPorPiedra );
+                            AbrirMenuPrincipal(nuevoCliente, infoClientes);
                             break;
                         }
                     case 6: //Funciona
@@ -76,12 +79,14 @@ namespace TrabajoenParejasPOO
                             opcionCorrecta = true;
                             Console.Clear();
                             Joyas.IngresarInventarioJoya(TipoDeJoya.cantidadPorJoya, TipoDePiedra.cantidadPorPiedra);
+                            AbrirMenuPrincipal(nuevoCliente, infoClientes);
                             break;
                         }
                     case 7: //Sin probar
                         {
                             opcionCorrecta = true;
                             Joyas.VerDisponibilidad();
+                            AbrirMenuPrincipal(nuevoCliente, infoClientes);
                             break;
                         }
                     case 8:
@@ -98,31 +103,58 @@ namespace TrabajoenParejasPOO
                             Console.WriteLine("Ingrese una opción válida");
                             Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
                             Console.ReadKey();
-                            AbrirMenuPrincipal();
+                            AbrirMenuPrincipal(nuevoCliente, infoClientes);
                             break;
                         }
                 }
             } while (opcionCorrecta == false); // Con esta condición nos aseguramos de que el algoritmo no se salga del rango de opciones
         }
-
-        static public string EncontrarCliente()
+        static public void AgregarCliente(Cliente nuevoCliente, List<Cliente> infoClientes)    // Acá se ingresan los datos personales del cliente.
+        {
+            //nuevoCliente = new Cliente();
+            //Variable para seguir agregando cliente (?)
+            int seguirIngresando = 0;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("-- Ingrese sus datos personales --");
+                Console.WriteLine("Nombre completo");
+                nuevoCliente.nombre = Console.ReadLine() ?? "";
+                Console.WriteLine("Cédula (con esta se identificará su orden)");
+                nuevoCliente.cedula = Console.ReadLine() ?? "";
+                Console.WriteLine("Número de teléfono");
+                nuevoCliente.telefono = Console.ReadLine() ?? "valor por defecto";
+                Console.WriteLine("Mes de compra");
+                nuevoCliente.mes = Console.ReadLine() ?? "".ToUpper();
+                infoClientes.Add(nuevoCliente);
+                Console.Clear();
+                Console.WriteLine("¿Desea Ingresar otro cliente? Ingrese 1 en tal caso");
+                Console.WriteLine("Ingrese 2 en caso contrario");
+                seguirIngresando = Int32.Parse(Console.ReadLine() ?? "");
+            }
+            while (seguirIngresando == 1);
+            Console.WriteLine("Cliente/s registrado");
+            Console.WriteLine("Ingrese cualquier tecla para continuar");
+            Console.ReadKey();
+        }
+        static public string EncontrarCliente(List<Cliente> infoClientes)
         {
             string cedulabuscar = "";
-            if (infoClientes.Count == 0)
+            if (infoClientes == null || infoClientes.Count == 0)
             {
                 Console.Clear();
                 Console.WriteLine("No se encuentran clientes en este momento");
                 Console.WriteLine("Intente ingresar usuarios primero");
                 Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
                 Console.ReadKey();
-                AbrirMenuPrincipal();
             }
             else
             {
                 Console.Clear();
                 Console.WriteLine("Ingrese cédula del cliente");
                 cedulabuscar = Console.ReadLine() ?? "";
-                if (cedulabuscar != null && infoCliente.Contains(cedulabuscar))
+                //joyas.Any(j => j.Nombre.ToLower() == nombre.ToLower()))
+                if (cedulabuscar != null && infoClientes.Any(item => item.cedula == cedulabuscar))
                 {
                     //Usuario encontrado
                     return cedulabuscar;
@@ -133,34 +165,31 @@ namespace TrabajoenParejasPOO
                     Console.WriteLine("Intente ingresar el usuario primero ó rectificar que la cédula sea correcta");
                     Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
                     Console.ReadKey();
-                    AbrirMenuPrincipal();
                 }
 
             }
             return cedulabuscar;
         }
-        static public void VerInfoTotalClientes()
+        static public void VerInfoTotalClientes(List<Cliente> infoCliente)
         {
-            if (infoCliente.Count == 0)
+            if (infoCliente ==   null || infoCliente.Count == 0)
             {
                 Console.Clear();
                 Console.WriteLine("No hay clientes registrados");
                 Console.WriteLine("Ingrese clientes para que esta opción esté disponible");
                 Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
                 Console.ReadKey();
-                Program.AbrirMenuPrincipal();
             }
             else
             {
                 Console.Clear();
                 //Aquí se muestra la lista con toda la información de los clientes
-                foreach (string infoCliente in infoClientes) //Recorrer la lista 
+                foreach (Cliente Cliente in infoCliente) //Recorrer la lista 
                 {
-                    Console.WriteLine(nuevoCliente.nombre); //mostrar la lista
+                    Console.WriteLine(); //mostrar la lista
                 }
                 Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
                 Console.ReadKey();
-                Program.AbrirMenuPrincipal();
             }
         }
     }

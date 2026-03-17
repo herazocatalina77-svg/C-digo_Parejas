@@ -132,7 +132,6 @@ namespace ProgramaInventarioJoyas
             }
             Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
             Console.ReadKey();
-            Program.AbrirMenuPrincipal();
         }
 
         static public void ActualizarInventarioTipoJoya()

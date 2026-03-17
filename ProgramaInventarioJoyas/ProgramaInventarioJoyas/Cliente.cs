@@ -9,46 +9,10 @@ namespace ProgramaInventarioJoyas
     {
         public string nombre { get; set; }
         public string cedula { get; set; }
-        string telefono = "";
+        public string telefono = "";
         public string mes = "";
         public int cantidadTotalJoyas;
         //static public List<string> infoCliente = new List<string>();
-        public void AgregarCliente()    // Acá se ingresan los datos personales del cliente.
-        {
-            //Variable para seguir agregando cliente (?)
-            int seguirIngresando = 0;
-            do
-            {
-                Console.Clear();
-                Console.WriteLine("-- Ingrese sus datos personales --");
-
-                Console.WriteLine("Nombre completo");
-                //nombre = Console.ReadLine() ?? "valor por defecto";
-                nombre = Console.ReadLine() ?? "valor por defecto";
-                //infoCliente.Add(nombre);
-
-                Console.WriteLine("Cédula (con esta se identificará su orden)");
-                //cedula = Console.ReadLine() ?? "valor por defecto";
-                cedula = Console.ReadLine() ?? "valor por defecto";
-                //infoCliente.Add(cedula);
-
-                Console.WriteLine("Número de teléfono");
-                telefono = Console.ReadLine() ?? "valor por defecto";
-                //infoCliente.Add(telefono);
-
-                Console.WriteLine("Mes de compra");
-                mes = Console.ReadLine() ?? "".ToUpper();
-                Console.Clear();
-                Console.WriteLine("¿Desea Ingresar otro cliente? Ingrese 1 en tal caso");
-                Console.WriteLine("Ingrese 2 en caso contrario");
-                seguirIngresando = Int32.Parse(Console.ReadLine() ?? "");
-            }
-            while (seguirIngresando == 1);
-            Console.WriteLine("Cliente/s registrado");
-            Console.WriteLine("Ingrese cualquier tecla para continuar");
-            Console.ReadKey();
-            Program.AbrirMenuPrincipal();
-        }
         static public void AgregarJoyaCliente()
         {
             int seguirAgregando = 0; //saber si se desea agregar otra joya sin tener que salirse del menú
@@ -71,7 +35,7 @@ namespace ProgramaInventarioJoyas
             cambiarMetodo = Console.ReadLine() ?? "Valor por defecto";
             if (cambiarMetodo == "1")
             {
-                Program.AbrirMenuPrincipal();
+                //Regresa al menpu principal
             }
             else if (cambiarMetodo == "2")
             {
@@ -104,7 +68,6 @@ namespace ProgramaInventarioJoyas
             }
             Console.WriteLine("presione cualquier tecla para regresar al menú principal");
             Console.ReadKey();
-            Program.AbrirMenuPrincipal();
 
         }
     }

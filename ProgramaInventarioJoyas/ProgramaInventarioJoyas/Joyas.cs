@@ -19,7 +19,6 @@ namespace ProgramaInventarioJoyas
                 TipoDePiedra.IngresarInventarioPiedras(); 
                 Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
                 Console.ReadKey();
-                Program.AbrirMenuPrincipal();
             }
             else
             {
@@ -48,7 +47,6 @@ namespace ProgramaInventarioJoyas
                 Console.WriteLine("Intente ingresar el inventario primero");
                 Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
                 Console.ReadKey();
-                Program.AbrirMenuPrincipal();
             }
             else
             {
@@ -73,7 +71,7 @@ namespace ProgramaInventarioJoyas
                 }
                 else
                 {
-                    Program.AbrirMenuPrincipal();
+                    //Regresa al menú principal
                 }
             }
         }
@@ -107,7 +105,7 @@ namespace ProgramaInventarioJoyas
                     else if (infoAmodificar == "3")
                     {
                         opcionCorrecta = true;
-                        Program.AbrirMenuPrincipal();
+                        //Regresa al menú principal
                     }
                     else
                     {
@@ -122,19 +120,20 @@ namespace ProgramaInventarioJoyas
                 seguirModificando = Console.ReadLine() ?? "";
             }
             while (seguirModificando == "0");
-            Program.AbrirMenuPrincipal();
         }
         static public void VerDisponibilidad() //Este método le pregunta a la clase joyas, si esa joya en específico está disponible ó no
         { //Sin probar
           //Ingresar la joya que se quiere ver si está en stock
           //Si la disponibilidad es falsa, entonces se muestran los resultados del condicional
+            string joyaDisponible = "";
+            Console.WriteLine("Ingrese la joya que desea ver la disponibilidad");
+            joyaDisponible = Console.ReadLine() ?? "";
             if (disponible == false)
             {
                 Console.Clear();
                 Console.WriteLine("La joya se encuentra en stock.");
                 Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
                 Console.ReadKey();
-                Program.AbrirMenuPrincipal();
             }
             else
             {
@@ -142,7 +141,6 @@ namespace ProgramaInventarioJoyas
                 Console.WriteLine("La joya no se encuentra en stock");
                 Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
                 Console.ReadKey();
-                Program.AbrirMenuPrincipal();
             }
         }
         static public void VerJoyasDetalle(List<string> TipoJoya, List<string> TipoPiedra)
@@ -155,7 +153,6 @@ namespace ProgramaInventarioJoyas
             }
             Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
             Console.ReadKey();
-            Program.AbrirMenuPrincipal();
         }
     }
 }
