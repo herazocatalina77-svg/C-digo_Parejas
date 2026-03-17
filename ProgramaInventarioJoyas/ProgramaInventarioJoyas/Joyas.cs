@@ -5,41 +5,7 @@ namespace ProgramaInventarioJoyas
     internal class Joyas
     {
         static bool disponible = false;
-        static public void AgregarJoyaCliente() //Retorna un valor tipo diccionario
-        {
-            int seguirAgregando = 0; //saber si se desea agregar otra joya sin tener que salirse del menú
-            do
-            {
-                //Llamar función agregar tipo joya
-                TipoDeJoya.AgregarTipoJoyaPedido();
-                //Llamar función agregar tipo piedra
-                TipoDePiedra.AgregarTipoPiedra();
-                Console.WriteLine("¿Desea seguir agregando joyas?");
-                Console.WriteLine("Ingrese 1 en tal caso");
-                Console.WriteLine("Imgrese 2 en caso contrario");
-                seguirAgregando = Int32.Parse(Console.ReadLine() ?? "");
-            }
-            while (seguirAgregando == 1);
-            string cambiarMetodo = "";
-            Console.WriteLine("Presione 1 para regresar al menú principal");
-            Console.WriteLine("Presione 2 para ver el precio de las joyas");
-            Console.WriteLine("Presione 3 para ver la lista de joyas");
-            cambiarMetodo = Console.ReadLine() ?? "Valor por defecto";
-            if (cambiarMetodo == "1")
-            {
-                Program.AbrirMenuPrincipal();
-            }
-            else if (cambiarMetodo == "2")
-            {
-                VerPrecioJoyas(TipoDeJoya.tipoJoya);
-            }
-            else if (cambiarMetodo == "3")
-            {
-                VerJoyasDetalle(TipoDeJoya.tipoJoya, TipoDePiedra.tipoPiedra);
-            }
-        }
-
-        static void VerPrecioJoyas(List<string> tipoJoya) //Funciona
+        public static void VerPrecioJoyas(List<string> tipoJoya) //Funciona
         {
 
         }

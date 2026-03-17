@@ -13,7 +13,6 @@ namespace ProgramaInventarioJoyas
         public string mes = "";
         public int cantidadTotalJoyas;
         static public List<string> infoCliente = new List<string>();
-        //static public Dictionary<string, string> clienteJoya = new Dictionary<string, string> (); //cliente, tipo de joyas
         public void AgregarCliente()    // Acá se ingresan los datos personales del cliente.
         {
             //Variable para seguir agregando cliente (?)
@@ -73,6 +72,40 @@ namespace ProgramaInventarioJoyas
                 Program.AbrirMenuPrincipal();
             }
         }
+        static public void AgregarJoyaCliente()
+        {
+            int seguirAgregando = 0; //saber si se desea agregar otra joya sin tener que salirse del menú
+            do
+            {
+                //Llamar función agregar tipo joya
+                TipoDeJoya.AgregarTipoJoyaPedido();
+                //Llamar función agregar tipo piedra
+                TipoDePiedra.AgregarTipoPiedra();
+                Console.WriteLine("¿Desea seguir agregando joyas?");
+                Console.WriteLine("Ingrese 1 en tal caso");
+                Console.WriteLine("Imgrese 2 en caso contrario");
+                seguirAgregando = Int32.Parse(Console.ReadLine() ?? "");
+            }
+            while (seguirAgregando == 1);
+            string cambiarMetodo = "";
+            Console.WriteLine("Presione 1 para regresar al menú principal");
+            Console.WriteLine("Presione 2 para ver el precio de las joyas");
+            Console.WriteLine("Presione 3 para ver la lista de joyas");
+            cambiarMetodo = Console.ReadLine() ?? "Valor por defecto";
+            if (cambiarMetodo == "1")
+            {
+                Program.AbrirMenuPrincipal();
+            }
+            else if (cambiarMetodo == "2")
+            {
+                Joyas.VerPrecioJoyas(TipoDeJoya.tipoJoya);
+            }
+            else if (cambiarMetodo == "3")
+            {
+                Joyas.VerJoyasDetalle(TipoDeJoya.tipoJoya, TipoDePiedra.tipoPiedra);
+            }
+        }
+
         static public int AgregarJoyaDelCliente(int cantidadTotalJoyas)  // Se determina la cantidad de joyas que el cliente.tiene guardadas en el programa
         {
             //Agregar únicamente la cantidad total de joyas al cliente en general

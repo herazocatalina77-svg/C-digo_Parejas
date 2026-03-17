@@ -44,7 +44,7 @@ namespace TrabajoenParejasPOO
                             nuevoCliente = new Cliente();
                             EncontrarCliente(Cliente.infoCliente);
                             Cliente.AgregarJoyaDelCliente(nuevoCliente.cantidadTotalJoyas);
-                            Joyas.AgregarJoyaCliente();
+                            Cliente.AgregarJoyaCliente();
                             break;
                         }
                     case 3: //Funciona
