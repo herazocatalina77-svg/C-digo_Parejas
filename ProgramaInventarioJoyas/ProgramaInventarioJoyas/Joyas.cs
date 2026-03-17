@@ -7,7 +7,8 @@ namespace ProgramaInventarioJoyas
         static bool disponible = false;
         public static void VerPrecioJoyas(List<string> tipoJoya) //Funciona
         {
-
+            TipoDeJoya.VerPrecioJoyaTipoJoya(tipoJoya);
+            TipoDePiedra.VerPrecioJoyaTipoPiedra(tipoJoya);
         }
         static public void IngresarInventarioJoya(List<int> cantidadPorJoya, List<int> cantidadPorPiedra) //Actualizar la información del stock para el tipo de joya- funciona
         {

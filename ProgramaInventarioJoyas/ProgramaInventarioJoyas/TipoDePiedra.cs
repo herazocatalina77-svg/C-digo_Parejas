@@ -7,7 +7,7 @@ namespace ProgramaInventarioJoyas
 {
     internal class TipoDePiedra:Joyas
     {
-        protected static int escogerTipoPiedra; //Escoger el tipo de piedra que tiene la joya 
+        static int escogerTipoPiedra; //Escoger el tipo de piedra que tiene la joya 
         public static List<string> tipoPiedra = null; //El tipo de piedra que tiene cada joya
         public static List<int> cantidadPorPiedra = new List<int>(); //El tipo de piedra que tiene cada joya
         static int cantidadTotalDiamantes = 0;
@@ -153,9 +153,9 @@ namespace ProgramaInventarioJoyas
                     break;
             }
         }
-        static void VerPrecioJoyaTipoJoya(List<string> tipoJoya) //Funciona
+        public static void VerPrecioJoyaTipoPiedra(List<string> tipoJoya) //Funciona
         {
-            foreach (string t in tipoPiedra)
+            foreach (string piedra in tipoPiedra)
             {
 
                 if (tipoJoya.Contains("DIAMANTE"))

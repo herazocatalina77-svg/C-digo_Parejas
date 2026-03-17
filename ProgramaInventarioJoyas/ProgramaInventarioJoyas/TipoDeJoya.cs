@@ -101,7 +101,7 @@ namespace ProgramaInventarioJoyas
             cantidadPorJoya.Add(cantidadTotalTobilleras);
             return cantidadPorJoya;
         }
-        static void VerPrecioJoyaTipoJoya(List<string> tipoJoya) //Funciona
+        public static void VerPrecioJoyaTipoJoya(List<string> tipoJoya) //Funciona
         {
             foreach (string item in tipoJoya)
             {

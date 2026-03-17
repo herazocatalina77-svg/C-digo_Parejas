@@ -45,7 +45,7 @@ namespace TrabajoenParejasPOO
                             //nuevoCliente = new Cliente();
                             EncontrarCliente(infoClientes);
                             //Instanciar objeto
-                            Cliente.AgregarJoyaDelCliente(nuevoCliente.cantidadTotalJoyas);
+                            Cliente.AgregarCantidadDeJoyasDelCliente(nuevoCliente.cantidadTotalJoyasPorCliente);
                             Cliente.AgregarJoyaCliente();
                             AbrirMenuPrincipal(nuevoCliente, infoClientes);
                             break;
@@ -63,7 +63,7 @@ namespace TrabajoenParejasPOO
                             opcionCorrecta = true;
                             Console.Clear();
                             EncontrarCliente(infoClientes);
-                            Cliente.VerJoyasCliente(TipoDeJoya.tipoJoya, nuevoCliente.nombre, nuevoCliente.cantidadTotalJoyas, nuevoCliente.cedula);
+                            Cliente.VerJoyasCliente(TipoDeJoya.tipoJoya, nuevoCliente.nombre, nuevoCliente.cantidadTotalJoyasPorCliente, nuevoCliente.cedula);
                             AbrirMenuPrincipal(nuevoCliente, infoClientes);
                             break;
                         }
@@ -128,7 +128,7 @@ namespace TrabajoenParejasPOO
                 Console.WriteLine("Número de teléfono");
                 nuevoCliente.telefono = Console.ReadLine() ?? "valor por defecto";
                 Console.WriteLine("Mes de compra");
-                nuevoCliente.mes = Console.ReadLine() ?? "".ToUpper();
+                nuevoCliente.mesCompra = Console.ReadLine() ?? "".ToUpper();
                 infoClientes.Add(nuevoCliente);
                 Console.Clear();
                 Console.WriteLine("¿Desea Ingresar otro cliente? Ingrese 1 en tal caso");

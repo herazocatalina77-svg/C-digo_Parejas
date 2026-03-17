@@ -10,9 +10,8 @@ namespace ProgramaInventarioJoyas
         public string nombre { get; set; }
         public string cedula { get; set; }
         public string telefono = "";
-        public string mes = "";
-        public int cantidadTotalJoyas;
-        //static public List<string> infoCliente = new List<string>();
+        public string mesCompra = "";
+        public int cantidadTotalJoyasPorCliente;
         static public void AgregarJoyaCliente()
         {
             int seguirAgregando = 0; //saber si se desea agregar otra joya sin tener que salirse del menú
@@ -47,7 +46,7 @@ namespace ProgramaInventarioJoyas
             }
         }
 
-        static public int AgregarJoyaDelCliente(int cantidadTotalJoyas)  // Se determina la cantidad de joyas que el cliente.tiene guardadas en el programa
+        static public int AgregarCantidadDeJoyasDelCliente(int cantidadTotalJoyas)  // Se determina la cantidad de joyas que el cliente.tiene guardadas en el programa
         {
             //Agregar únicamente la cantidad total de joyas al cliente en general
             TipoDeJoya.tipoJoya = new List<string>();
@@ -55,7 +54,7 @@ namespace ProgramaInventarioJoyas
             cantidadTotalJoyas++;
             return cantidadTotalJoyas;
         }
-        static public void VerJoyasCliente(List<string> tipoJoya, string nombre, int cantidadTotalJoyas, string cedula)
+        static public void VerJoyasCliente(List<string> tipoJoya, string nombre, int cantidadTotalJoyas, string cedula) //Ver las joyas de ese cliente específicamente
         { //no funciona :(
             Console.Clear();
             Console.WriteLine($"usuario: {nombre} \njoyas compradas : {cantidadTotalJoyas}");
