@@ -73,7 +73,6 @@ namespace ProgramaInventarioJoyas
                 Program.AbrirMenuPrincipal();
             }
         }
-
         static public int AgregarJoyaDelCliente(int cantidadTotalJoyas)  // Se determina la cantidad de joyas que el cliente.tiene guardadas en el programa
         {
             //Agregar únicamente la cantidad total de joyas al cliente en general
@@ -100,4 +99,3 @@ namespace ProgramaInventarioJoyas
         }
     }
 }
-

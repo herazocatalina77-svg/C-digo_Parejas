@@ -9,7 +9,6 @@ namespace TrabajoenParejasPOO
         {
             AbrirMenuPrincipal();
         }
-
         static public void AbrirMenuPrincipal()
         {
             int opcion;
@@ -60,22 +59,21 @@ namespace TrabajoenParejasPOO
                             opcionCorrecta = true;
                             Console.Clear();
                             EncontrarCliente(Cliente.infoCliente);
-                            Cliente.VerJoyasCliente(Joyas.tipoJoya, nuevoCliente.nombre, nuevoCliente.cantidadTotalJoyas, nuevoCliente.cedula);
+                            Cliente.VerJoyasCliente(TipoDeJoya.tipoJoya, nuevoCliente.nombre, nuevoCliente.cantidadTotalJoyas, nuevoCliente.cedula);
                             break;
-
                         }
                     case 5: //funciona
                         {
                             opcionCorrecta = true;
                             Console.Clear();
-                            Joyas.VerStock(Joyas.cantidadPorJoya);
+                            Joyas.VerStock(TipoDeJoya.cantidadPorJoya,TipoDePiedra.cantidadPorPiedra );
                             break;
                         }
                     case 6: //Funciona
                         {
                             opcionCorrecta = true;
                             Console.Clear();
-                            Joyas.IngresarInventario();
+                            Joyas.IngresarInventarioJoya(TipoDeJoya.cantidadPorJoya, TipoDePiedra.cantidadPorPiedra);
                             break;
                         }
                     case 7: //Sin probar
