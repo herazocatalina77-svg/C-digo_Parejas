@@ -7,12 +7,12 @@ namespace ProgramaInventarioJoyas
 {
     internal class Cliente
     {
-        public string nombre = "";
-        public string cedula = "";
+        public string nombre { get; set; }
+        public string cedula { get; set; }
         string telefono = "";
         public string mes = "";
         public int cantidadTotalJoyas;
-        static public List<string> infoCliente = new List<string>();
+        //static public List<string> infoCliente = new List<string>();
         public void AgregarCliente()    // Acá se ingresan los datos personales del cliente.
         {
             //Variable para seguir agregando cliente (?)
@@ -23,16 +23,18 @@ namespace ProgramaInventarioJoyas
                 Console.WriteLine("-- Ingrese sus datos personales --");
 
                 Console.WriteLine("Nombre completo");
+                //nombre = Console.ReadLine() ?? "valor por defecto";
                 nombre = Console.ReadLine() ?? "valor por defecto";
-                infoCliente.Add(nombre);
+                //infoCliente.Add(nombre);
 
                 Console.WriteLine("Cédula (con esta se identificará su orden)");
+                //cedula = Console.ReadLine() ?? "valor por defecto";
                 cedula = Console.ReadLine() ?? "valor por defecto";
-                infoCliente.Add(cedula);
+                //infoCliente.Add(cedula);
 
                 Console.WriteLine("Número de teléfono");
                 telefono = Console.ReadLine() ?? "valor por defecto";
-                infoCliente.Add(telefono);
+                //infoCliente.Add(telefono);
 
                 Console.WriteLine("Mes de compra");
                 mes = Console.ReadLine() ?? "".ToUpper();
@@ -46,31 +48,6 @@ namespace ProgramaInventarioJoyas
             Console.WriteLine("Ingrese cualquier tecla para continuar");
             Console.ReadKey();
             Program.AbrirMenuPrincipal();
-
-        }
-        static public void VerInfoTotalClientes()
-        {
-            if (infoCliente.Count == 0)
-            {
-                Console.Clear();
-                Console.WriteLine("No hay clientes registrados");
-                Console.WriteLine("Ingrese clientes para que esta opción esté disponible");
-                Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
-                Console.ReadKey();
-                Program.AbrirMenuPrincipal();
-            }
-            else
-            {
-                Console.Clear();
-                //Aquí se muestra la lista con toda la información de los clientes
-                foreach (string infoCliente in infoCliente) //Recorrer la lista 
-                {
-                    Console.WriteLine(infoCliente); //mostrar la lista
-                }
-                Console.WriteLine("Presione cualquier tecla para regresar al menú principal");
-                Console.ReadKey();
-                Program.AbrirMenuPrincipal();
-            }
         }
         static public void AgregarJoyaCliente()
         {
